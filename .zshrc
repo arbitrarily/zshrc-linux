@@ -181,6 +181,11 @@ alias mirrorupdate='sudo reflector --latest 250 --protocol https --sort rate --s
 # Servers
 alias dobox="ssh marko@45.55.60.122"
 
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # Notes
 
 # Shortcut				Default Binding
