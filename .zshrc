@@ -59,7 +59,7 @@ ZSH_THEME="honukai"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -69,7 +69,7 @@ ZSH_THEME="honukai"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git node fd github gitignore sublime ssh-agent npm zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git colorize copyfile docker node fd github gitignore sublime ssh-agent npm fzf zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,6 +93,14 @@ export LANG=en_US.UTF-8
 export LC_MESSAGES="en_US.UTF-8"
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL="en_US.UTF-8"
+
+# Overridable locale support
+if [ -z $$LC_ALL ]; then
+  export LC_ALL=C
+fi
+if [ -z $LANG ]; then
+  export LANG=en_US
+fi
 
 # edit php.ini
 alias phpini='sudo vim /etc/php/php.ini'
@@ -123,6 +131,12 @@ alias glg2='git log --date-order --all --graph --name-status --format="%C(green)
 
 # history
 alias h='history'
+
+if [ -w ~/.zsh_history -o -w ~ ]; then
+  SAVEHIST=100000
+  HISTSIZE=100000
+  HISTFILE=~/.zsh_history
+fi
 
 # git folder
 alias gg='cd ~/Git'
@@ -160,6 +174,9 @@ alias ip='curl https://ipinfo.io/plain; echo'
 
 # Dolphon > Open
 alias open="dolphin"
+
+# Update Mirrors
+alias mirrorupdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 
 # Servers
 alias dobox="ssh marko@45.55.60.122"
