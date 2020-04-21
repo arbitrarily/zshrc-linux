@@ -162,6 +162,9 @@ alias zshrc="sudo vim ~/Git/zshrc-linux/.zshrc"
 # colored search in files
 alias grep='grep --color=auto'
 
+# Search Web files
+alias rgweb="rg --type-add 'web:*.{html,css,scss,js,php}'"
+
 # flush dns
 alias flush='sudo ifconfig en0 down && sudo ifconfig en1 down && sudo ifconfig en2 down && sudo route flush && sudo ifconfig en0 up && sudo ifconfig en1 up && sudo ifconfig en2 up'
 
@@ -180,6 +183,9 @@ alias mirrorupdate='sudo reflector --latest 250 --protocol https --sort rate --s
 
 # Servers
 alias dobox="ssh marko@45.55.60.122"
+
+# 
+alias editneo="sudo vim ~/.config/neofetch/config.conf"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
